@@ -1,0 +1,15 @@
+<!--
+/**
+ * @category    Ledyer
+ * @author      Oskars Elksnitis <info@scandiweb.com>
+ * @package     Ledyer_Payment
+ * @copyright   Copyright (c) 2022 Scandiweb, Ltd (https://scandiweb.com)
+ */
+-->
+<div class="payment-method"
+     data-bind="css: {'_active': (getCode() == isChecked())},
+                afterRender: renderLedyerIframe()">
+    <div class="payment-method-content">
+        <div id="ledyer-payment-method"></div>
+    </div>
+</div>

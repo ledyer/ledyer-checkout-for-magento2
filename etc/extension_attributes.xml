@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+<!--
+/**
+ * @category    Ledyer
+ * @author      Oskars Elksnitis <info@scandiweb.com>
+ * @package     Ledyer_Payment
+ * @copyright   Copyright (c) 2022 Scandiweb, Ltd (https://scandiweb.com)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Quote\Api\Data\AddressInterface">
+        <attribute code="care_of" type="string"/>
+        <attribute code="attention_name" type="string"/>
+    </extension_attributes>
+</config>

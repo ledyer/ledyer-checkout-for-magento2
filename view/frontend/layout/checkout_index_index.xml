@@ -1,0 +1,50 @@
+<?xml version='1.0'?>
+<!--
+/**
+ * @category    Ledyer
+ * @author      Oskars Elksnitis <info@scandiweb.com>
+ * @package     Ledyer_Payment
+ * @copyright   Copyright (c) 2022 Scandiweb, Ltd (https://scandiweb.com)
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Ledyer_Payment::css/toggle-buttons.css" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Ledyer\Payment\Block\Checkout\ToggleButtons"
+                   name="ledyer.toggle.buttons"
+                   template="Ledyer_Payment::toggle-buttons.phtml"
+                   before="checkout.root"/>
+        </referenceContainer>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="shipping-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="toggle-buttons" xsi:type="array">
+                                                    <item name="component" xsi:type="string">
+                                                        Ledyer_Payment/js/view/toggle-buttons
+                                                    </item>
+                                                    <item name="sortOrder" xsi:type="string">1</item>
+                                                    <item name="displayArea" xsi:type="string">shippingAdditional</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

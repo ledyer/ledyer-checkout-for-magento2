@@ -1,0 +1,33 @@
+<?xml version='1.0'?>
+<!--
+/**
+ * @category    Ledyer
+ * @author      Oskars Elksnitis <info@scandiweb.com>
+ * @package     Ledyer_Payment
+ * @copyright   Copyright (c) 2022 Scandiweb, Ltd (https://scandiweb.com)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <ledyer>
+                <active>0</active>
+                <sandbox_mode>0</sandbox_mode>
+                <debug>0</debug>
+                <model>LedyerPaymentFacade</model>
+                <allowspecific>0</allowspecific>
+                <can_use_internal>1</can_use_internal>
+                <can_use_checkout>1</can_use_checkout>
+                <title>Ledyer Payments</title>
+                <order_status>pending</order_status>
+                <is_gateway>1</is_gateway>
+                <client_secret backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <can_capture>1</can_capture>
+                <b2c_url>/checkout/</b2c_url>
+                <security_level>100</security_level>
+                <allow_shipping_address>0</allow_shipping_address>
+            </ledyer>
+        </payment>
+    </default>
+</config>

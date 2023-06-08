@@ -1,0 +1,41 @@
+<?xml version='1.0'?>
+<!--
+/**
+ * @category    Ledyer
+ * @author      Oskars Elksnitis <info@scandiweb.com>
+ * @package     Ledyer_Payment
+ * @copyright   Copyright (c) 2022 Scandiweb, Ltd (https://scandiweb.com)
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="ledyer_quote" resource="default">
+        <column xsi:type="int" name="ledyer_quote_id" padding="10"
+                unsigned="true" nullable="false" identity="true"
+                comment="Ledyer Quote Id"/>
+        <column xsi:type="text" name="ledyer_order_id" comment="Ledyer Order Id"/>
+        <column xsi:type="text" name="ledyer_session_id" comment="Ledyer Session Id"/>
+        <column xsi:type="int" name = "quote_id" padding="10"
+                unsigned="true" nullable="false" comment="Magento Quote Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="ledyer_quote_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FK_LEDYER_QUOTE_ID_QUOTE_ENTITY_ID" table="ledyer_quote"
+                 column="quote_id" referenceTable="quote" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+    <table name="sales_order" resource="default">
+        <column xsi:type="text" name="ledyer_session_id" comment="Ledyer Session Id"/>
+        <column xsi:type="text" name="ledyer_order_id" comment="Ledyer Order Id"/>
+    </table>
+    <table name="quote_address">
+        <column xsi:type="text" name="ledyer_care_of" comment="Ledyer Care Of Attribute"/>
+        <column xsi:type="text" name="ledyer_attention_name" comment="Ledyer Attention Name Attribute"/>
+    </table>
+    <table name="sales_order_address">
+        <column xsi:type="text" name="ledyer_care_of" comment="Ledyer Care Of Attribute"/>
+        <column xsi:type="text" name="ledyer_attention_name" comment="Ledyer Attention Name Attribute"/>
+    </table>
+    <table name="quote">
+        <column xsi:type="text" name="ledyer_validation_errors" comment="Ledyer Validation errors"/>
+    </table>
+</schema>

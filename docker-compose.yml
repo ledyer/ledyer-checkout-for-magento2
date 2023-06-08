@@ -1,0 +1,58 @@
+version: '3.8'
+services:
+  db:
+    image: mariadb:latest
+    ports:
+      - '3306:3306'
+    restart: on-failure
+    environment:
+      MYSQL_DATABASE: magento
+      MYSQL_USER: magento
+      MYSQL_PASSWORD: magento
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  elasticsearch:
+    image: elasticsearch:7.17.7
+    restart: on-failure
+    environment:
+      - discovery.type=single-node
+      - ingest.geoip.downloader.enabled=false
+      - xpack.security.enabled=false
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+
+  magento:
+    build:
+      context: .
+      dockerfile: Dockerfile-magento
+    ports:
+      - '8182:8080'
+    restart: on-failure
+    environment:
+      MAGENTO_HOST: localhost
+      MAGENTO_EXTERNAL_HTTP_PORT_NUMBER: 8182
+      MAGENTO_DATABASE_HOST: db
+      MAGENTO_DATABASE_PORT_NUMBER: 3306
+      MAGENTO_DATABASE_USER: magento
+      MAGENTO_DATABASE_PASSWORD: magento
+      MAGENTO_DATABASE_NAME: magento
+      MAGENTO_ELASTICSEARCH_HOST: elasticsearch
+      MAGENTO_ELASTICSEARCH_PORT_NUMBER: 9200
+      MAGENTO_MODE: developer
+      #MAGENTO_USERNAME: admin
+      #MAGENTO_PASSWORD: password
+    volumes:
+      - mgdata:/bitnami/magento
+      - "./:/bitnami/magento/app/code/Ledyer/Payment"
+    depends_on:
+      - db
+      - elasticsearch
+ 
+volumes:
+  dbdata:
+  mgdata:
+  esdata:

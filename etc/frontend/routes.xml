@@ -1,0 +1,20 @@
+<?xml version='1.0' ?>
+<!--
+/**
+ * @category    Ledyer
+ * @author      Oskars Elksnitis <info@scandiweb.com>
+ * @package     Ledyer_Payment
+ * @copyright   Copyright (c) 2022 Scandiweb, Ltd (https://scandiweb.com)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route frontName="ledyer" id="ledyer">
+            <module name="Ledyer_Payment"/>
+        </route>
+        <route id="checkout">
+            <module name="Ledyer_Payment" after="Magento_Checkout"/>
+        </route>
+    </router>
+</config>

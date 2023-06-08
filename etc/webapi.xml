@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!--
+/**
+ * @category    Ledyer
+ * @author      Oskars Elksnitis <info@scandiweb.com>
+ * @package     Ledyer_Payment
+ * @copyright   Copyright (c) 2022 Scandiweb, Ltd (https://scandiweb.com)
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/ledyer/notifications" method="POST">
+        <service class="Ledyer\Payment\Api\NotificationInterface" method="process" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/ledyer/validate" method="POST">
+        <service class="Ledyer\Payment\Api\ValidationInterface" method="validate" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+</routes>

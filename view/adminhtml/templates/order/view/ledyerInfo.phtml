@@ -1,0 +1,18 @@
+<?php
+/**
+ * @category    Ledyer
+ * @author      Oskars Elksnitis <info@scandiweb.com>
+ * @package     Ledyer_Payment
+ * @copyright   Copyright (c) 2022 Scandiweb, Ltd (https://scandiweb.com)
+ */
+use Ledyer\Payment\Block\Adminhtml\Order\View\LedyerInfo;
+
+/* @var $block LedyerInfo*/
+
+$sessionId = $block->getSessionId();
+$orderId = $block->getOrderId();
+?>
+<?php if ($sessionId && $orderId): ?>
+<div class="ledyer-session-id"><strong>Ledyer Session Id: </strong><?= /* @noEscape */ $sessionId ?></div>
+<div class="ledyer-session-id"><strong>Ledyer Order Id: </strong><?= /* @noEscape */ $orderId ?></div>
+<?php endif; ?>

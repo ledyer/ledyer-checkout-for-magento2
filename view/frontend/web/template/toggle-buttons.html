@@ -1,0 +1,17 @@
+<!--
+/**
+ * @category    Ledyer
+ * @author      Oskars Elksnitis <info@scandiweb.com>
+ * @package     Ledyer_Payment
+ * @copyright   Copyright (c) 2022 Scandiweb, Ltd (https://scandiweb.com)
+ */
+-->
+
+<div class="toggle-buttons" data-bind="afterRender: initButtons()">
+    <a class="b2c-button toggle-button" data-bind="attr: {href: getB2cUrl()}">
+        <div data-bind="text: getB2cText()"></div>
+    </a>
+    <a class="b2b-button toggle-button" data-bind="attr: {href: getB2bUrl()}">
+        <div data-bind="text: getB2bText()"></div>
+    </a>
+</div>

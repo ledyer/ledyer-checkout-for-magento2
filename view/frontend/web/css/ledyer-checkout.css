@@ -1,0 +1,65 @@
+.opc-wrapper {
+    width: 100% !important;
+    padding-right: 0 !important;
+}
+
+#ledyer-payment-method {
+    text-align: center;
+}
+
+.checkout-shipping-method {
+    max-width: 506px;
+    margin: auto !important;
+}
+
+.table-checkout-shipping-method {
+    margin: 0 auto;
+}
+
+.cart-container {
+    display: grid;
+}
+
+.cart-summary {
+    max-width: 506px;
+    margin: 50px auto;
+    position: inherit !important;
+    width: 100% !important;
+    background: none;
+    padding: 0 !important;
+}
+
+.form-cart {
+    margin: auto;
+    padding-right: 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+    .form-cart {
+        width: 100%;
+        max-width: 506px;
+    }
+}
+
+table {
+    border-color: #BDBDBD
+}
+
+.step-title, .summary.title {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+
+.totals {
+    font-size: 14px;
+    color: #828282;
+}
+
+.grand.totals > *, #block-discount-heading, #block-shipping-heading {
+    font-size: 16px !important;
+    color: #18191f
+}
+
+input.radio {
+    accent-color: #18191F;
+}

@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<!--
+/**
+ * @category    Ledyer
+ * @author      Oskars Elksnitis <info@scandiweb.com>
+ * @package     Ledyer_Payment
+ * @copyright   Copyright (c) 2022 Scandiweb, Ltd (https://scandiweb.com)
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      layout="admin-2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="payment_additional_info">
+        <block class="Ledyer\Payment\Block\Adminhtml\Order\View\LedyerInfo"
+               name="sales_order_view_custom"
+               template="order/view/ledyerInfo.phtml" />
+    </referenceContainer>
+</page>
