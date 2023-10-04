@@ -1,4 +1,4 @@
-## Magneto2 plugin for Ledyer checkout
+## Magento2 plugin for Ledyer checkout
 
 ## Setup
 
