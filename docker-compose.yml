@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   db:
-    image: mariadb:latest
+    image: mariadb:10.4
     ports:
       - '3306:3306'
     restart: on-failure
@@ -43,11 +43,12 @@ services:
       MAGENTO_ELASTICSEARCH_HOST: elasticsearch
       MAGENTO_ELASTICSEARCH_PORT_NUMBER: 9200
       MAGENTO_MODE: developer
+      BITNAMI_DEBUG: true
       #MAGENTO_USERNAME: admin
       #MAGENTO_PASSWORD: password
     volumes:
       - mgdata:/bitnami/magento
-      - "./:/bitnami/magento/app/code/Ledyer/Payment"
+      #- "./:/bitnami/magento/app/code/Ledyer/Payment"
     depends_on:
       - db
       - elasticsearch
