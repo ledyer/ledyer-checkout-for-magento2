@@ -28,7 +28,7 @@ services:
   magento:
     build:
       context: .
-      dockerfile: Dockerfile-magento
+      dockerfile: Dockerfile-magento-debugger
     ports:
       - '8182:8080'
     restart: on-failure
@@ -46,9 +46,10 @@ services:
       BITNAMI_DEBUG: true
       #MAGENTO_USERNAME: admin
       #MAGENTO_PASSWORD: password
+      LEDYER_MODE: developer
     volumes:
       - mgdata:/bitnami/magento
-      #- "./:/bitnami/magento/app/code/Ledyer/Payment"
+      - "./:/bitnami/magento/app/code/Ledyer/Payment"
     depends_on:
       - db
       - elasticsearch

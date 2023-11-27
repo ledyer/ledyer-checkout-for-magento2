@@ -45,8 +45,18 @@
                         <field id="active">1</field>
                     </depends>
                 </field>
+                <field id="sandbox_env" translate="label" type="select"
+                    sortOrder="32" showInDefault="1" showInWebsite="1">
+                    <label>Sandbox Environment</label>
+                    <frontend_model>Ledyer\Payment\Block\Adminhtml\Form\Field\LedyerDevModeFieldRenderer</frontend_model>
+                    <source_model>Ledyer\Payment\Model\Source\SandboxEnvironment</source_model>
+                    <depends>
+                        <field id="active">1</field>
+                        <field id="sandbox_mode">1</field>
+                    </depends>
+                </field>
                 <field id="debug" translate="label" type="select"
-                       sortOrder="31" showInDefault="1" showInWebsite="1">
+                       sortOrder="33" showInDefault="1" showInWebsite="1">
                     <label>Debug mode</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
