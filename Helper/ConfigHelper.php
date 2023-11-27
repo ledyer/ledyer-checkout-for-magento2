@@ -19,6 +19,7 @@ class ConfigHelper extends AbstractHelper
     public const PATH_CLIENT_ID = 'payment/ledyer/client_id';
     public const PATH_CLIENT_SECRET = 'payment/ledyer/client_secret';
     public const PATH_SANDBOX_ENABLED = 'payment/ledyer/sandbox_mode';
+    public const PATH_SANDBOX_ENV = 'payment/ledyer/sandbox_env';
     public const PATH_IS_ACTIVE = 'payment/ledyer/active';
     public const PATH_ORDER_STATUS = 'payment/ledyer/order_status';
     public const PATH_TITLE = 'payment/ledyer/title';
@@ -231,7 +232,7 @@ class ConfigHelper extends AbstractHelper
     public function getMode()
     {
         if ($this->getSandboxEnabled()) {
-            return 'sandbox';
+            return $this->getConfigValue(self::PATH_SANDBOX_ENV);
         }
         return 'live';
     }

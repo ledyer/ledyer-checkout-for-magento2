@@ -1,0 +1,17 @@
+FROM bitnami/magento:2.4.3
+
+ENV XDEBUG_PORT 8999
+ENV XDEBUG_IDEKEY docker
+
+RUN apt-get update && apt-get install -y build-essential autoconf \
+    && pecl install "xdebug-3.1.5"
+
+RUN echo 'zend_extension=/opt/bitnami/php/lib/php/extensions/xdebug.so' >> /opt/bitnami/php/lib/php.ini
+
+RUN echo "xdebug.mode=debug" >> /opt/bitnami/php/etc/conf.d/xdebug.ini && \
+    echo "xdebug.start_with_request=yes" >> /opt/bitnami/php/etc/conf.d/xdebug.ini && \
+    echo "xdebug.client_host=host.docker.internal" >> /opt/bitnami/php/etc/conf.d/xdebug.ini && \
+    echo "xdebug.client_port=${XDEBUG_PORT}" >> /opt/bitnami/php/etc/conf.d/xdebug.ini && \
+    echo "xdebug.idekey=${XDEBUG_IDEKEY}" >> /opt/bitnami/php/etc/conf.d/xdebug.ini
+
+RUN echo 'Mutex posixsem' >>/opt/bitnami/apache2/conf/httpd.conf
