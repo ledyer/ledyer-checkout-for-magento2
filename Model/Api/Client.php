@@ -116,29 +116,14 @@ class Client implements ClientInterface
         );
         switch ($request->getRequestType()) {
             case 'POST':
-                $this->client->post(
-                    sprintf(
-                        'https://%s.%s.%s%s',
-                        $request->getUrlPrefix(),
-                        $this->config->getMode(),
-                        'ledyer.com/',
-                        $request->getEndpoint()
-                    ),
+                $this->client->post($this->config->getApiUrl($request->getUrlPrefix(), $request->getEndpoint()),
                     $this->json->serialize($request->getBody())
                 );
                 $this->response = $this->client->getBody();
                 $this->validateResponse($request, $this->client->getStatus(), $this->response);
                 break;
             case 'GET':
-                $this->client->get(
-                    sprintf(
-                        'https://%s.%s.%s%s',
-                        $request->getUrlPrefix(),
-                        $this->config->getMode(),
-                        'ledyer.com/',
-                        $request->getEndpoint()
-                    )
-                );
+                $this->client->get($this->config->getApiUrl($request->getUrlPrefix(), $request->getEndpoint()));
                 $this->response = $this->client->getBody();
                 $this->validateResponse($request, $this->client->getStatus(), $this->response);
                 break;
@@ -218,14 +203,7 @@ class Client implements ClientInterface
                 'Content-Type' => $this->auth->getContentType()
             ]
         );
-        $this->client->post(
-            sprintf(
-                'https://%s.%s.%s%s',
-                $this->auth->getUrlPrefix(),
-                $this->config->getMode(),
-                'ledyer.com/',
-                $this->auth->getEndpoint()
-            ),
+        $this->client->post($this->config->getApiUrl($this->auth->getUrlPrefix(), $this->auth->getEndpoint()),
             [
                 'grant_type' => 'client_credentials'
             ]
