@@ -17,7 +17,7 @@ class SandboxEnvironment implements ArrayInterface
             return [
                 ['value' => 'sandbox', 'label' => __('Sandbox')],
                 ['value' => 'dev', 'label' => __('Dev')],
-                ['value' => 'local', 'label' => __('Local')]
+                ['value' => 'localhost', 'label' => __('Local')]
             ];
         }
 
