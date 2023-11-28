@@ -242,8 +242,7 @@ class ConfigHelper extends AbstractHelper
      * 
      * @return string
      */
-    public function getBootstrapUrl()
-    {
+    public function getBootstrapUrl() {
         if($this->getMode() === 'local' || $this->getMode() === 'local-fe') {
             return 'http://localhost:1337/bootstrap.iife.js';
         }
