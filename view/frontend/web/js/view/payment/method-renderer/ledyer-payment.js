@@ -28,7 +28,10 @@ define([
                 s.setAttribute('data-buy-button-color', data.buttonColor);
             }
             document.body.appendChild(s);
-
+            document.addEventListener('ledyerCheckoutBillingUpdated', (event) => {
+                updateShipping();
+                updateBilling();
+            });
             document.addEventListener('ledyerCheckoutShippingUpdated', (event) => {
                 updateShipping();
                 updateBilling();
