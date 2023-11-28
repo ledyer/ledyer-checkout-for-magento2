@@ -242,14 +242,16 @@ class ConfigHelper extends AbstractHelper
      * 
      * @return string
      */
-    public function getBootstrapUrl() {
+    public function getBootstrapUrl() 
+    {
         if($this->getMode() === 'local' || $this->getMode() === 'local-fe') {
             return 'http://localhost:1337/bootstrap.iife.js';
         }
         return sprintf('https://checkout.%s.ledyer.com/bootstrap.js', $this->getMode());
     }
 
-    public function getBootstrapEnv() {
+    public function getBootstrapEnv() 
+    {
         if($this->getMode() === 'local' || $this->getMode() === 'local-fe') {
             return 'localhost';
         } else if ($this->getMode() === 'live') {
@@ -265,7 +267,8 @@ class ConfigHelper extends AbstractHelper
      * @param Endpoint $endpoint
      * @return string
      */
-    public function getApiUrl(string $prefix, string $endpoint) {
+    public function getApiUrl(string $prefix, string $endpoint) 
+    {
         if($this->getMode() === 'local') {
             if ($prefix === 'auth') {
                 return sprintf(
