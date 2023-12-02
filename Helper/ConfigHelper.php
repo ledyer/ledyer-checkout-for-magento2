@@ -19,6 +19,7 @@ class ConfigHelper extends AbstractHelper
     public const PATH_CLIENT_ID = 'payment/ledyer/client_id';
     public const PATH_CLIENT_SECRET = 'payment/ledyer/client_secret';
     public const PATH_SANDBOX_ENABLED = 'payment/ledyer/sandbox_mode';
+    public const PATH_SANDBOX_ENV = 'payment/ledyer/sandbox_env';
     public const PATH_IS_ACTIVE = 'payment/ledyer/active';
     public const PATH_ORDER_STATUS = 'payment/ledyer/order_status';
     public const PATH_TITLE = 'payment/ledyer/title';
@@ -231,9 +232,72 @@ class ConfigHelper extends AbstractHelper
     public function getMode()
     {
         if ($this->getSandboxEnabled()) {
-            return 'sandbox';
+            return $this->getConfigValue(self::PATH_SANDBOX_ENV);
         }
         return 'live';
+    }
+
+    /** 
+     * Get the bootstrap url
+     * 
+     * @return string
+     */
+    public function getBootstrapUrl() 
+    {
+        if($this->getMode() === 'local' || $this->getMode() === 'local-fe') {
+            return 'http://localhost:1337/bootstrap.iife.js';
+        }
+        return sprintf('https://checkout.%s.ledyer.com/bootstrap.js', $this->getMode());
+    }
+
+    public function getBootstrapEnv() 
+    {
+        if($this->getMode() === 'local' || $this->getMode() === 'local-fe') {
+            return 'localhost';
+        } else if ($this->getMode() === 'live') {
+            return 'production';
+        }
+        return $this->getMode();
+    }
+
+    /**
+     * Get the API url
+     *
+     * @param UrlPrefix $prefix
+     * @param Endpoint $endpoint
+     * @return string
+     */
+    public function getApiUrl(string $prefix, string $endpoint) 
+    {
+        if($this->getMode() === 'local') {
+            if ($prefix === 'auth') {
+                return sprintf(
+                    'http://host.docker.internal:9001/%s',
+                    $endpoint,
+                );
+            } else {
+                return sprintf(
+                    'http://host.docker.internal:8000/%s',
+                    $endpoint,
+                );
+            }
+        } else if ($this->getMode() === 'local-fe') {
+            return sprintf(
+                'https://%s.%s.%s%s',
+                $prefix,
+                'dev',
+                'ledyer.com/',
+                $endpoint
+            );
+        } else {
+            return sprintf(
+                'https://%s.%s.%s%s',
+                $prefix,
+                $this->getMode(),
+                'ledyer.com/',
+                $endpoint
+            );
+        }
     }
 
     /**

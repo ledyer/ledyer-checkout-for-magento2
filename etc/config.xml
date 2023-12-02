@@ -14,6 +14,7 @@
             <ledyer>
                 <active>0</active>
                 <sandbox_mode>0</sandbox_mode>
+                <sandbox_env>sandbox</sandbox_env>
                 <debug>0</debug>
                 <model>LedyerPaymentFacade</model>
                 <allowspecific>0</allowspecific>

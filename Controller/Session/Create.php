@@ -59,9 +59,9 @@ class Create implements HttpGetActionInterface
         if ($this->config->getIsActive()) {
             $result = $this->ledyerSession->createSession();
             $result['buttonColor'] = $this->config->getButtonColor();
-            $result['env'] = $this->config->getMode() === 'live' ? 'production' : 'sandbox';
+            $result['env'] = $this->config->getBootstrapEnv();
             $result['containerId'] = $this->config->getContainerId();
-            $result['url'] = sprintf('https://checkout.%s.ledyer.com/bootstrap.js', $this->config->getMode());
+            $result['url'] = $this->config->getBootstrapUrl();
             $jsonResult->setData($result);
         }
 
