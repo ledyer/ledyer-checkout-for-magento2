@@ -1,3 +1,5 @@
+#!/bin/bash
+
 docker compose stop &&
 docker compose down -v &&
 docker volume rm -f ledyer-checkout-for-magento2_mgdata &&
