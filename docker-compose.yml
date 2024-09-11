@@ -14,7 +14,7 @@ services:
       - dbdata:/var/lib/mysql
 
   elasticsearch:
-    image: elasticsearch:7.17.7
+    image: elasticsearch:7.17.24
     restart: on-failure
     environment:
       - discovery.type=single-node
